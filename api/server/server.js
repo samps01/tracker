@@ -18,7 +18,7 @@ app.use(function(req, res, next) {
 });
 
 app.put('/vehicles',(req,res)=>{
-    console.log(req.body.length);
+    console.log(req.body);
     res.send();
 });
 
@@ -30,3 +30,5 @@ app.post('/readings',(req,res)=>{
 app.listen(port,()=>{
     console.log(`Server running on ${port}`);
 });
+
+module.exports = {app};
