@@ -12,6 +12,7 @@ const fs = require('fs');
 const {vehicleController} = require('../controller/vehicles');
 const {readingObj,readingController} = require('../controller/reading');
 const {alertNotification} = require('../controller/alertNotification');
+const {alertMail} = require('../controller/mailer');
 
 const app = express();
 const port = process.env.PORT;
@@ -47,6 +48,7 @@ app.post('/readings',(req,res)=>{
     alertNotification.checkEngineAlert(data);
     const result = readingObj(data);
     readingController(data,result);
+    alertMail('sp03075n@pace.edu','Trial mail','Hello World');
     res.send()
 });
 

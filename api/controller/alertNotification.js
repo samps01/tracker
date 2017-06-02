@@ -16,14 +16,22 @@ const engineRpmAlert = (currentData)=>{
     const alertObj = {};
     const vehicleData = getVehicleInfo(currentData);
     vehicleData.then((data)=>{
-        if(currentData.engineRpm > data.redlineRpm) {
-            alertObj.vin = data.vin;
-            alertObj.priority = 'HIGH';
-            alertObj.engineRpm = currentData.engineRpm;
-            return alertObj;
-        }
+        if(data !== null){
+            if(currentData.engineRpm > data.redlineRpm) {
+                alertObj.vin = data.vin;
+                alertObj.priority = 'HIGH';
+                alertObj.engineRpm = currentData.engineRpm;
+                return alertObj;
+            };
+        };
+        return false;
     }).then((obj)=>{
-        addAlert(obj);
+        if(obj){
+            console.log(obj);
+            addAlert(obj);
+        }
+    }).catch((e)=>{
+        console.log(e);
     });
 };
 
