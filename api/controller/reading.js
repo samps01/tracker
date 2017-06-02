@@ -30,8 +30,8 @@ const readingObj = (data)=>{
 };
 
 //function to add to Reading collection
-const addNewReading = (doc)=>{
-    Readings.insertMany(doc).then((res)=>{
+const addNewReading = (result)=>{
+    Readings.insertMany(result).then((res)=>{
         //console.log('Added Reading');
     }).catch((e)=>{
         console.log(e)
@@ -64,6 +64,7 @@ const readingController = (data,result)=>{
         new:true
     }).then((res)=>{
         if(res === null){
+            //result data from the formulated object
             addNewReading(result);
         }else{
             //console.log('Updated Reading')

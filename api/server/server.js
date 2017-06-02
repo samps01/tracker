@@ -11,6 +11,7 @@ const fs = require('fs');
 
 const {vehicleController} = require('../controller/vehicles');
 const {readingObj,readingController} = require('../controller/reading');
+const {alertNotification} = require('../controller/alertNotification');
 
 const app = express();
 const port = process.env.PORT;
@@ -40,11 +41,14 @@ app.put('/vehicles',(req,res)=>{
 //POST method for reading data
 app.post('/readings',(req,res)=>{
     const data = req.body;
+    alertNotification.engineRpmAlert(data);
+    alertNotification.fuelVolumeAlert(data);
+    alertNotification.tireAlert(data);
+    alertNotification.checkEngineAlert(data);
     const result = readingObj(data);
     readingController(data,result);
     res.send()
 });
-
 
 app.listen(port,()=>{
     console.log(`Server running on ${port}`);
