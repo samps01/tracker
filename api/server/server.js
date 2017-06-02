@@ -4,6 +4,8 @@ require('../config/config');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const fs = require('fs');
 
 const {Vehicles} = require('../models/vehicles');
 const {Readings} = require('../models/readings');
@@ -11,6 +13,9 @@ const {Readings} = require('../models/readings');
 const app = express();
 const port = process.env.PORT;
 
+const accessLogStream = fs.createWriteStream(`./access.log`, {flags: 'a'});
+
+app.use(morgan('short',{stream: accessLogStream}));
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
