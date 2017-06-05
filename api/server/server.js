@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const fs = require('fs');
+const _ = require('lodash');
 
 
 
@@ -32,23 +33,34 @@ app.use(function(req, res, next) {
 //PUT method for vehicles data
 app.put('/vehicles',(req,res)=>{
     const vehicles = req.body;
-
-    vehicles.forEach((vehicle)=>{
-        vehicleController(vehicle);
-    });
-    res.send();
+    if(_.isEmpty(vehicles)){
+        res.status(400).send({text:'Vehicle data expected'});
+    }else{
+        vehicles.forEach((vehicle)=>{
+            vehicleController(vehicle);
+        });
+        res.send();
+    }
 });
 
 //POST method for reading data
 app.post('/readings',(req,res)=>{
     const data = req.body;
-    alertNotification.alertNotifier(data);
-    const result = readingObj(data);
-    readingController(data,result);
+    if(_.isEmpty(data)){
+        res.status(400).send({text:'Expects readings data'});
+    }else{
+        alertNotification.alertNotifier(data);
+        const result = readingObj(data);
+        readingController(data,result);
+        res.send();
+    }
     //alertMail('sp03075n@pace.edu','Trial mail','Hello World');
-    res.send()
 });
 
+app.use('/*',(req,res,next)=>{
+   res.status(404).send({type:'Not found Error'})
+    next();
+});
 app.listen(port,()=>{
     console.log(`Server running on ${port}`);
 });
