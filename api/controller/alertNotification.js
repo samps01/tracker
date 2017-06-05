@@ -2,6 +2,7 @@ const {AlertNotification} = require('../models/alert');
 const {Vehicles} = require('../models/vehicles');
 const _ = require('lodash');
 
+//Gets vehicle info from the vehicle collection
 const getVehicleInfo = (currentData)=>{
    let data = Vehicles.findOne({vin:currentData.vin}).then((data)=>{
         return data
@@ -12,6 +13,7 @@ const getVehicleInfo = (currentData)=>{
 };
 
 
+//Parent method to be exported = accepts readings
 const alertNotifier = (readingData)=>{
     const vehicleData = getVehicleInfo(readingData);
     vehicleData.then((data)=>{
@@ -21,6 +23,7 @@ const alertNotifier = (readingData)=>{
     });
 };
 
+//Defines the model for the alert structure
 const alertModel = (currentData)=>{
     const alertObj = {
         vin:"",
@@ -81,6 +84,10 @@ const alertModel = (currentData)=>{
     });
 };
 
+
+//Filters for rules
+//Returns array of alert object
+//if no alert - return empty array
 const alertRules = (currentData,vehicle)=>{
     let priority = [];
     const fuelRatio = (currentData.fuelVolume/vehicle.maxFuelVolume)*100;
@@ -131,6 +138,7 @@ const alertRules = (currentData,vehicle)=>{
     return priority;
 };
 
+//Adds new alert to the alert collection
 const addAlert = (alertObj)=>{
     AlertNotification.insertMany(alertObj).then((docs)=>{
         return docs;
@@ -139,6 +147,8 @@ const addAlert = (alertObj)=>{
     });
 };
 
+//Update function checks for existing records and updates it
+//if no record found calls addAlert function
 const update = (newData,vehicleData)=>{
         const priority = alertRules(newData,vehicleData);
         AlertNotification.findOneAndUpdate({vin:newData.vin},{

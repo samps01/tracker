@@ -18,6 +18,7 @@ let transporter = nodemailer.createTransport({
 });
 
 
+//alert function accepts target-mail-id, subject for the mail and the body
 const alertMail = (to,subject,text)=>{
 
     const HelperOptions = helper(to,subject,text);
@@ -29,6 +30,7 @@ const alertMail = (to,subject,text)=>{
         }
     });
 };
+
 const helper = (to,subject,text)=>{
     return {
         to,
