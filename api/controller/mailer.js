@@ -31,10 +31,10 @@ const alertMail = (to,subject,text)=>{
 };
 const helper = (to,subject,text)=>{
     return {
-        from: 'Samson Sabu <samps01@gmail.com>',
         to,
         subject,
-        text
+        text,
+        from: 'Samson Sabu <samps01@gmail.com>'
     };
 };
 

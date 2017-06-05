@@ -42,13 +42,14 @@ app.put('/vehicles',(req,res)=>{
 //POST method for reading data
 app.post('/readings',(req,res)=>{
     const data = req.body;
-    alertNotification.engineRpmAlert(data);
-    alertNotification.fuelVolumeAlert(data);
-    alertNotification.tireAlert(data);
-    alertNotification.checkEngineAlert(data);
+    // alertNotification.engineRpmAlert(data);
+    // alertNotification.fuelVolumeAlert(data);
+    // alertNotification.tireAlert(data);
+    // alertNotification.checkEngineAlert(data);
+    alertNotification.alertNotifier(data);
     const result = readingObj(data);
     readingController(data,result);
-    alertMail('sp03075n@pace.edu','Trial mail','Hello World');
+    //alertMail('sp03075n@pace.edu','Trial mail','Hello World');
     res.send()
 });
 

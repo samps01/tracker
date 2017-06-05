@@ -1,31 +1,12 @@
 const {mongoose} = require('../db/mongoose');
 
-const AlertNotification =  mongoose.model('alert',{
+const AlertNotification = mongoose.model('alertNotification',{
     vin:{
         type:String,
-        required:false
-    },
-    engineRpm:{
-      type:Number
-    },
-    fuelVolume:{
-      type:Number
-    },
-    tires:{
-
-    },
-    engineCoolantLow:{
-        type:Boolean
-    },
-    checkEngineLightOn:{
-        type:Boolean
+        required:true
     },
     priority:{
-        type:String,
-        default: 'Low'
-    },
-    timeStamp:{
-        type:String
+        type:Array
     }
 });
 
