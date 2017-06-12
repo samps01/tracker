@@ -15,6 +15,7 @@ const {readingObj,readingController} = require('../controller/reading');
 const {alertNotification} = require('../controller/alertNotification');
 const {getAllVehicles} = require('../controller/client/clientAllvehicles');
 const {getHighAlerts} = require('../controller/client/clientAllAlerts');
+const {getIndividualAlert} = require('../controller/client/clientIndividualAlert');
 const {alertMail} = require('../controller/mailer');
 
 const app = express();
@@ -70,6 +71,18 @@ app.get('/client/vehicles',(req,res)=>{
 app.get('/client/highalerts',(req,res)=>{
     getHighAlerts().then((data)=>{
         res.send(data);
+    });
+});
+
+app.get('/client/alert/:vin',(req,res)=>{
+    const vin = req.params['vin']
+    getIndividualAlert(vin).then((alert)=>{
+       if(alert === null){
+          throw Error;
+       }
+       res.send(alert);
+    }).catch((err)=>{
+        res.status(404).send({Error:'No data found'});
     });
 });
 // app.use('/*',(req,res,next)=>{
