@@ -13,6 +13,8 @@ const _ = require('lodash');
 const {vehicleController} = require('../controller/vehicles');
 const {readingObj,readingController} = require('../controller/reading');
 const {alertNotification} = require('../controller/alertNotification');
+const {getAllVehicles} = require('../controller/client/clientAllvehicles');
+const {getHighAlerts} = require('../controller/client/clientAllAlerts');
 const {alertMail} = require('../controller/mailer');
 
 const app = express();
@@ -57,10 +59,23 @@ app.post('/readings',(req,res)=>{
     //alertMail('sp03075n@pace.edu','Trial mail','Hello World');
 });
 
-app.use('/*',(req,res,next)=>{
-   res.status(404).send({type:'Not found Error'})
-    next();
+app.get('/client/vehicles',(req,res)=>{
+    getAllVehicles().then((data)=>{
+        res.send(data);
+    }).catch((err)=>{
+        res.status(404).send(err);
+    })
 });
+
+app.get('/client/highalerts',(req,res)=>{
+    getHighAlerts().then((data)=>{
+        res.send(data);
+    });
+});
+// app.use('/*',(req,res,next)=>{
+//    res.status(404).send({type:'Not found Error'})
+//     next();
+// });
 app.listen(port,()=>{
     console.log(`Server running on ${port}`);
 });

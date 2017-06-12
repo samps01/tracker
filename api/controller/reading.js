@@ -1,3 +1,4 @@
+const moment = require('moment');
 const {Readings} = require('../models/readings');
 
 //Custom reading object schema

@@ -1,6 +1,7 @@
 const {AlertNotification} = require('../models/alert');
 const {Vehicles} = require('../models/vehicles');
 const _ = require('lodash');
+const moment = require('moment');
 
 //Gets vehicle info from the vehicle collection
 const getVehicleInfo = (currentData)=>{
@@ -39,14 +40,14 @@ const alertModel = (currentData)=>{
                 alertObj.priority.push({
                     flag:'HIGH',
                     message:"Red Line RPM exceeded",
-                    timeStamp: Date()
+                    timeStamp: currentData.timestamp
                 });
             };
             if(fuelRatio<10){
                 alertObj.priority.push({
                     flag:'Medium',
                     message:"Less than 10% Fuel",
-                    timeStamp: Date()
+                    timeStamp: currentData.timestamp
                 });
             };
             for(const prop in currentData.tires){
@@ -54,7 +55,7 @@ const alertModel = (currentData)=>{
                     alertObj.priority.push({
                         flag:'LOW',
                         message:`Tire Pressure ${prop}`,
-                        timeStamp: Date()
+                        timeStamp: currentData.timestamp
                     });
                 }
             }
@@ -63,14 +64,14 @@ const alertModel = (currentData)=>{
                     alertObj.priority.push({
                         flag:'LOW',
                         message:"Engine Coolant Low",
-                        timeStamp: Date()
+                        timeStamp: currentData.timestamp
                     });
                 }
                 if(currentData.checkEngineLightOn){
                     alertObj.priority.push({
                         flag:'LOW',
                         message:"Check Engine",
-                        timeStamp: Date()
+                        timeStamp: currentData.timestamp
                     });
                 }
             }
@@ -96,14 +97,14 @@ const alertRules = (currentData,vehicle)=>{
             priority.push({
                 flag:'HIGH',
                 message:"Red Line RPM exceeded",
-                timeStamp: Date()
+                timeStamp: currentData.timestamp
             });
         };
         if(fuelRatio<10){
             priority.push({
                 flag:'Medium',
                 message:"Less than 10% Fuel",
-                timeStamp: Date()
+                timeStamp: currentData.timestamp
             });
         };
         for(const prop in currentData.tires){
@@ -111,7 +112,7 @@ const alertRules = (currentData,vehicle)=>{
                 priority.push({
                     flag:'LOW',
                     message:"Tire Pressure",
-                    timeStamp: Date()
+                    timeStamp: currentData.timestamp
                 });
             }
         }
@@ -120,14 +121,14 @@ const alertRules = (currentData,vehicle)=>{
                 priority.push({
                     flag:'LOW',
                     message:"Engine Coolant Low",
-                    timeStamp: Date()
+                    timeStamp: currentData.timestamp
                 });
             }
             if(currentData.checkEngineLightOn){
                 priority.push({
                     flag:'LOW',
                     message:"Check Engine",
-                    timeStamp: Date()
+                    timeStamp: currentData.timestamp
                 });
             }
         }
