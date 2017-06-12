@@ -16,6 +16,7 @@ const {alertNotification} = require('../controller/alertNotification');
 const {getAllVehicles} = require('../controller/client/clientAllvehicles');
 const {getHighAlerts} = require('../controller/client/clientAllAlerts');
 const {getIndividualAlert} = require('../controller/client/clientIndividualAlert');
+const {getFullVehicleDetail} = require('../controller/client/clientIndividualVehicle');
 const {alertMail} = require('../controller/mailer');
 
 const app = express();
@@ -83,6 +84,15 @@ app.get('/client/alert/:vin',(req,res)=>{
        res.send(alert);
     }).catch((err)=>{
         res.status(404).send({Error:'No data found'});
+    });
+});
+
+app.get('/client/vehicle/:vin',(req,res)=>{
+   const vin = req.params['vin'];
+   getFullVehicleDetail(vin).then((vehicleReading)=>{
+      res.send(vehicleReading);
+   }).catch((err)=>{
+       res.status(404).send({Error:'Not Found'})
     });
 });
 // app.use('/*',(req,res,next)=>{
