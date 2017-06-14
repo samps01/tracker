@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  background-color: #3949AB
+}
+
+.appheadText{
+  padding-bottom: 20px;
+  font-size: 40px!important;
+  text-align: center;
+  color:whitesmoke;
+}
+.axis {
+  font: 10px "Helvetica Neue";
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #FFC107;
+  shape-rendering: crispEdges;
+}
+
+.axis-title {
+
+  fill: noe;
+  stroke: #FFC107;
+  stroke-width: 0.5px;
+}
+text:after{
+  color: white;
+}
+.line {
+  fill: none;
+  stroke: #8BC34A;
+  stroke-width: 1.5px;
+}
+

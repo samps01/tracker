@@ -1,0 +1,11 @@
+.navbar{
+  box-shadow: #2B2922 0px 0px 1px 1px;
+  border: none!important;
+  background: #1565c0;
+}
+.navbar-brand{
+  color:whitesmoke;
+}
+.navbar-default .navbar-nav>li>a{
+  color: #dddddd;
+}

@@ -1,0 +1,30 @@
+<!--<linecharthart></linecharthart>-->
+<div class="row">
+  <div class="col-sm-8">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="extra-options">
+          <button class="btn btn-default button" (click)="setLocation()">Location History</button>
+          <button class="btn btn-default button" (click)="onAlertShow()">Alerts History</button>
+        </div>
+        <app-linechart></app-linechart>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <h3 class="mapHeader">VEHICLE LOCATION HISTORY</h3>
+      <div class="col-xs-12 thumbnail">
+        <app-location [locationPoints]="locationPoint"></app-location>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="row" *ngFor="let item of displayData">
+      <div class="col-xs-12">
+        <app-reading-item [individualName]="item" *ngIf="vehicleInfo[item]"
+                          [individualData]="vehicleInfo[item]"
+                          [individualTime]="vehicleInfo['timestamp']"></app-reading-item>
+        </div>
+    </div>
+  </div>
+</div>

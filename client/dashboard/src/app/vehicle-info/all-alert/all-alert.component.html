@@ -1,0 +1,11 @@
+<h2 class="appheadText">LIST OF ALL ALERTS</h2>
+<hr>
+<div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item header"><strong>{{alertData.vin}}</strong></li>
+    <li class="list-group-item alertBody" *ngFor="let alert of alertData['priority']">
+      <code>{{alert.message}}</code> at {{alert.timeStamp | date:'medium'}}
+      <span class="badge" [ngStyle]="{backgroundColor:getColor(alert.flag)}">{{alert.flag}}</span></li>
+  </ul>
+  <hr>
+</div>

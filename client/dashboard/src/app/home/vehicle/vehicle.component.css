@@ -1,0 +1,83 @@
+html {
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+h5 {
+  font-size: 1.28571429em;
+  font-weight: 700;
+  line-height: 1.2857em;
+  margin: 0;
+}
+
+.card {
+  font-size: 1em;
+  overflow: hidden;
+  padding: 0;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: .28571429rem;
+  box-shadow: 0 1px 3px 1px #000000, 0 0 0 1px #d4d4d5;
+}
+
+.card-block {
+  background-color: #dddddd;
+  font-size: 1em;
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  border: none;
+  border-top: 1px solid rgba(34, 36, 38, .1);
+  box-shadow: none;
+}
+
+.card-img-top {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 1.28571429em;
+  font-weight: 700;
+  line-height: 1.2857em;
+}
+
+.card-text {
+  text-align: center;
+  clear: both;
+  margin-top: .5em;
+  color: rgba(0, 0, 0, .68);
+}
+
+.card-footer {
+  background-color: #dddddd !important;
+  font-size: 1em;
+  position: static;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, .4);
+  border-top: 1px solid rgba(0, 0, 0, .05) !important;
+  background: #fff;
+}
+
+.card-inverse .btn {
+  width: 200px;
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+
+  background-color: #2ecc71;
+  color: #ecf0f1;
+
+  transition: background-color .3s;
+}
+

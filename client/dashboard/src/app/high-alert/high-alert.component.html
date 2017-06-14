@@ -1,0 +1,13 @@
+<h2 class="appheadText">LIST OF HIGH ALERTS</h2>
+<hr>
+<div class="card" *ngFor="let vin of vinObj">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item header"><strong>{{vin}}</strong></li>
+    <li class="list-group-item alertBody" *ngFor="let alert of highAlertObj[vin]">
+      <code>{{alert.message}}</code> at {{alert.timeStamp | date:'medium'}}
+      <button class="btn btn default button badge"><span class="glyphicon glyphicon-envelope"></span>  Send Email</button>
+      <span class="badge" style="background-color: #B71C1C">{{alert.flag}}</span></li>
+  </ul>
+  <hr>
+</div>
+

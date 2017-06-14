@@ -1,0 +1,25 @@
+.button {
+  font-size: 15px;
+  width: 200px;
+  display: inline-block;
+    margin: 30px 20px;
+  padding: 10px;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+
+  background-color: #FF9800;
+  color: #ecf0f1;
+
+  transition: background-color .3s;
+}
+.extra-options{
+  text-align: center;
+}
+.mapHeader{
+  color:antiquewhite;
+  text-align: center;
+  padding-bottom: 20px;
+}

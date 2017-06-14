@@ -1,0 +1,18 @@
+<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+  <div class="card card-inverse card-info">
+    <img class="card-img-top" src="http://keganmills.com/wp-content/uploads/2015/05/car-mock-up.-1024x676.png">
+    <div class="card-block">
+      <h4 class="card-title mt-3">
+        <span class="label label-danger">{{vehicleInfo.make}} <strong>{{vehicleInfo.model}}</strong></span>
+      </h4>
+      <div class="meta card-text">
+        <code>{{vehicleInfo.year}}</code>
+      </div>
+      <div class="card-text">
+        <strong>{{vehicleInfo.vin}}</strong>
+       </div>
+    <div class="card-footer">
+      <button class="btn btn-default viewMore" (click)="onCarSelect()">View More</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="thumbnail card">
+  <header class="card-header">
+    <h2 class="card-title">{{individualData[individualData.length-1]}}</h2>
+  </header>
+  <div class="card-content">
+    <h4 class="card-title">{{individualName | uppercase}}</h4>
+    <span>Last Update: {{lastUpdated}}</span>
+  </div>
+  <footer class="card-footer">
+    <a style="curson:pointer" (click)="onShowMore()" class="btn btn-success btn-block button">Show Graph</a>
+  </footer>
+</div>
