@@ -3,11 +3,8 @@ seed for the Full-Stack IOT training project: car-tracker
 
 ## directory structure:
 
-**`client`** [*module-client*]: contains ui app (HTML, CSS, JS, fonts, images)      
-**`api`** [*module-api*]: contains REST API
+**`client`** [*module-client*]: contains ui app (HTML, CSS, JS, fonts, images) Angular 4.0
+**`api`** [*module-api*]: contains REST API (Node express app)
 
-## mock sensor: 
-[http://mocker.egen.io](http://mocker.egen.io)
-
-## requirements:
-[https://learn.egen.io](https://learn.egen.io/courses/overview.html)
+##Author
+**Samson Pallivathukkal
